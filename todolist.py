@@ -48,8 +48,6 @@ add_button = Button(entry_frame, text="ADD", command=add_task, width=10, bg="#FF
 add_button.grid(row=0, column=1)
 
 
-
-
 #Remove the task in tasks list
 def remove_task():
     try:
@@ -63,7 +61,6 @@ def remove_task():
 
 remove_button = Button(button_frame, text="Remove Task", command=remove_task, width=15, bg="#FFC107", fg="white", font=("Arial", 12, "bold"), bd=0, relief="flat")
 remove_button.grid(row=0, column=0, padx=10, pady=10)
-
 
 
 #To mark the task is completed 
