@@ -28,9 +28,6 @@ button_frame.pack()
 
 
 #Adding the task in tasks list
-add_button = Button(entry_frame, text="ADD", command=add_task, width=10, bg="#FF6B6B", fg="white", font=("Arial", 12, "bold"), bd=0, relief="flat")
-add_button.grid(row=0, column=1)
-
 def update_listbox():
     task_listbox.delete(0, END)
     for task in tasks:
@@ -46,12 +43,14 @@ def add_task():
         task_entry.delete(0, END)
     else:
         messagebox.showwarning("Input Error", "Please enter a task.")
+        
+add_button = Button(entry_frame, text="ADD", command=add_task, width=10, bg="#FF6B6B", fg="white", font=("Arial", 12, "bold"), bd=0, relief="flat")
+add_button.grid(row=0, column=1)
+
+
 
 
 #Remove the task in tasks list
-remove_button = Button(button_frame, text="Remove Task", command=remove_task, width=15, bg="#FFC107", fg="white", font=("Arial", 12, "bold"), bd=0, relief="flat")
-remove_button.grid(row=0, column=0, padx=10, pady=10)
-
 def remove_task():
     try:
         task_index = task_listbox.curselection()[0]
@@ -60,11 +59,12 @@ def remove_task():
     except IndexError:
         messagebox.showwarning("Selection Error", "Please select a task to delete.")
 
+remove_button = Button(button_frame, text="Remove Task", command=remove_task, width=15, bg="#FFC107", fg="white", font=("Arial", 12, "bold"), bd=0, relief="flat")
+remove_button.grid(row=0, column=0, padx=10, pady=10)
+
+
 
 #To mark the task is completed 
-complete_button = Button(button_frame, text="Mark Completed", command=complete_task, width=15, bg="#4CAF50", fg="white", font=("Arial", 12, "bold"), bd=0, relief="flat")
-complete_button.grid(row=0, column=1, padx=10, pady=10)
-
 def complete_task():
     try:
         task_index = task_listbox.curselection()[0]
@@ -74,14 +74,18 @@ def complete_task():
     except IndexError:
         messagebox.showwarning("Selection Error", "Please select a task to mark as completed.")
 
-#Clear all task in tasks list
-clear_button = Button(button_frame, text="Clear All", command=clear_tasks, width=15, bg="#FF5252", fg="white", font=("Arial", 12, "bold"), bd=0, relief="flat")
-clear_button.grid(row=1, column=0, columnspan=2, pady=10)
+complete_button = Button(button_frame, text="Mark Completed", command=complete_task, width=15, bg="#4CAF50", fg="white", font=("Arial", 12, "bold"), bd=0, relief="flat")
+complete_button.grid(row=0, column=1, padx=10, pady=10)
 
+
+#Clear all task in tasks list
 def clear_tasks():
     global tasks
     tasks = []
     update_listbox()
+
+clear_button = Button(button_frame, text="Clear All", command=clear_tasks, width=15, bg="#FF5252", fg="white", font=("Arial", 12, "bold"), bd=0, relief="flat")
+clear_button.grid(row=1, column=0, columnspan=2, pady=10)
 
 
 root.mainloop()
