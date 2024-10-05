@@ -54,8 +54,10 @@ add_button.grid(row=0, column=1)
 def remove_task():
     try:
         task_index = task_listbox.curselection()[0]
-        task_listbox.delete(task_index)
-        tasks.pop(task_index)
+        tasks.pop(task_index)  
+        for i in range(len(tasks)):
+            tasks[i] = f"{i+1}. {tasks[i].split('. ', 1)[1]}"
+        update_listbox() 
     except IndexError:
         messagebox.showwarning("Selection Error", "Please select a task to delete.")
 
