@@ -1,27 +1,27 @@
 from tkinter import *
 
 root = Tk()
-root.geometry("320x400") 
+root.geometry("320x400")
 root.title("Calculator BY Akash")
 
 def click(event):
     global scvalue
     text = event.widget.cget("text")
-    print(text)
-    
+    # print(text)
+
     if text == "=":
         if scvalue.get().isdigit():
             value = int(scvalue.get())
         else:
             try:
                 value = eval(screen.get())
-            except Exception as e:
+            except Exception as e :
                 value = "Error"
         scvalue.set(value)
         screen.update()
-            
+
     elif text == "C":
-        scvalue.set("") 
+        scvalue.set("")
         screen.update()
     else:
         scvalue.set(scvalue.get() + text)
@@ -32,11 +32,11 @@ scvalue.set("")
 screen = Entry(root, textvar=scvalue, font="lucida 20 bold", bd=5, relief=SUNKEN)
 screen.pack(fill=X, ipadx=8, pady=10, padx=10)
 
-# First row of buttons (1, 2, 3, +)
-f = Frame(root, bg="grey")
-b = Button(f, text="1", padx=20, pady=20, font="lucida 15 bold")
-b.grid(row=1, column=0)
-b.bind("<Button-1>", click)
+#First row of buttons (1,2,3,+)
+f = Frame(root,bg="grey")
+b = Button(f,text = "1",padx=20,pady=20,font="lucida 15 bold")
+b.grid(row=1,column=0)
+b.bind("<Button-1>",click)
 
 b = Button(f, text="2", padx=20, pady=20, font="lucida 15 bold")
 b.grid(row=1, column=1)
@@ -89,6 +89,7 @@ b.grid(row=3, column=3)
 b.bind("<Button-1>", click)
 f.pack()
 
+
 # Fourth row of buttons (Clear, 0, =, /)
 f = Frame(root, bg="grey")
 b = Button(f, text="C", padx=20, pady=20, font="lucida 15 bold")
@@ -109,4 +110,5 @@ b.bind("<Button-1>", click)
 f.pack()
 
 root.mainloop()
-
+    
+        
